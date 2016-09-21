@@ -86,7 +86,7 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		}
 	}
-
+		
 	/**
 	 * Retorna o palco principal.
 	 * 

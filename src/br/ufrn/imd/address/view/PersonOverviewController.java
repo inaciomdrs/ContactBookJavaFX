@@ -1,12 +1,11 @@
 package br.ufrn.imd.address.view;
 
-import java.sql.Date;
-import java.time.LocalDate;
-
 import br.ufrn.imd.address.MainApp;
 import br.ufrn.imd.address.model.Person;
 import br.ufrn.imd.address.util.DateUtil;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -81,6 +80,22 @@ public class PersonOverviewController {
 			postalCodeLabel.setText("");
 			cityLabel.setText("");
 			birthdayLabel.setText("");
+		}
+	}
+
+	@FXML
+	private void handleDeletePerson() {
+		int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
+
+		if (selectedIndex < 0) {
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Nenhuma seleção");
+			alert.setHeaderText("Nenhuma Pessoa Selecionada");
+			alert.setContentText("Por favor, selecione uma pessoa na tabela.");
+
+			alert.showAndWait();
+		} else {
+			personTable.getItems().remove(selectedIndex);
 		}
 	}
 }
